@@ -1,0 +1,66 @@
+<%- include ('partials/_header')  %>  <!--Importación de la cabecera de codigo HTML5-->
+
+<div class="container">
+  <div class="row mt-3"></div>
+  <h1>Agenda Web </h1>
+  <div class="row mt-3"> <!--Margen-->
+    <div class="col-md-7"> <!--Columna de la tabla-->
+      <table class="table table-bordered table-hover"> <!--Creación tabla-->
+        <thead> <!--Cabecera de la tabla-->
+          <tr>
+            <th>N°</th>
+            <th>Nombre(s)</th>
+            <th>Apellidos</th>
+            <th>Teléfono</th>
+            <th>Correo Electrónico</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody> <!--Cuerpo de la tabla-->
+          <% if (data) { %> <!--Valida datos-->
+            <% for(var i = 0; i < data.length; i++) { %> <!--Inicia variable e incrementa con el dato-->
+              <tr>
+                <td><%= (i + 1) %></td> <!--Variable del for-->
+                <td><%= data[i].name %></td>
+                <td><%= data[i].surnames %></td>
+                <td><%= data[i].phone %></td>
+                <td><%= data[i].email %></td>
+                <td>
+                  <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Borrar</a> <!--(Concatena al delete, el id de la BD), elimina, devuelve la posicion -->
+                </p>
+                  <a href="/update/<%= data[i].id %>" class="btn btn-info"> Editar</a> <!--Actuaaliza, muestra numero que se actualizara-->
+                  </td>
+              </tr>
+            <% } %>
+          <% } %>       
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-5"> <!--Columna de la tabla-->
+      <div class="card"> <!--Se coloca en recuadro de Bootstrap-->
+        <div class="card-body"> <!--Cuerpo de la tarjeta-->
+          <form action="/add" method="post"> <!--Ruta de servidor-->
+            <div class="form-group"> <!--Dar separación-->
+              <input type="text" name="name" placeholder="Nombre(s)" class="form-control" required>
+            </div>
+            <div class="form-group"> <!--Dar separación-->
+              <input type="text" name="surnames" placeholder="Apellidos" class="form-control" required>
+            </div>
+            <div class="form-group"> <!--Dar separación-->
+              <input type="number" name="phone" placeholder="Teléfono" class="form-control" required>
+            </div>
+            <div class="form-group"> <!--Dar separación-->
+              <input type="email" name="email" placeholder="Correo Electrónico" class="form-control" required>
+            </div>
+            <div class="form-group"> <!--Dar separación-->
+            <button type="submit" class="btn btn-success btn-block"> <!--Botón de Registrar Contacto-->
+              Registrar Contacto
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include ('partials/_footer')  %> <!--Importación del pie de codigo HTML5-->

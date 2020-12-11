@@ -1,0 +1,34 @@
+<%- include ('partials/_header')  %>  <!--Importación de la cabecera de codigo HTML5-->
+
+<div class="container mt-3"> <!--Margen-->
+  <div class="roww">
+    <h1>Actualizar Cambios </h1>
+    <div class="row mt-3">
+    <div class="col-md 5"> <!--Columna de 5-->
+      <div class="card">
+        <div class="card-body">
+          <form action="/update/<%= data.id %>" method="post"> <!--Ruta de servidor-->
+            <div class="form-group"> <!--Dar separación-->
+              <input type="text" name="name" placeholder="Nombre(s)" value="<%= data.name%>" class="form-control" required>
+            </div>
+            <div class="form-group"> <!--Dar separación-->
+              <input type="text" name="surnames" placeholder="Apellidos" value="<%= data.surnames%>" class="form-control" required>
+            </div>
+            <div class="form-group"> <!--Dar separación-->
+              <input type="number" name="phone" placeholder="Teléfono" value="<%= data.phone%>"class="form-control" required>
+            </div>
+            <div class="form-group"> <!--Dar separación-->
+              <input type="email" name="email" placeholder="Correo Electrónico" value="<%= data.email%>"class="form-control" required>
+            </div>
+            <div class="form-group"> <!--Dar separación-->
+            <button type="submit" class="btn btn-success btn-block"> <!--Botón de Guardar Contacto-->
+              Guardar Contacto
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include ('partials/_footer')  %> <!--Importación del pie de codigo HTML5-->
